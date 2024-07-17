@@ -35,6 +35,21 @@ if (password !== existingUser.password){
 return res.status(200).json({message:"login successfull"})
 })
 
+app.post("/signup",async(req,res)=>{
+  const {userName,email,password} = req.body
+  if( !userName || !email || !password){
+    return res.status(400).json({error:"Please fill all the fields" })
+    
+  }
+  const existingUser = await User.findOne({email})
+if(existingUser){  
+return res.status(400).json({error:"Invalid Credentials" })
+}
+const createUser = await User.create({userName,email,password})
+await createUser.save()
+return res.status(200).json({message:"signup successfull"})
+
+})
 
 
 
