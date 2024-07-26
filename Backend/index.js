@@ -4,6 +4,7 @@ import express from 'express'
 const app = express()
 import cors from 'cors'
 import User from './models/user.model.js';
+import  bookRoute from './routes/book.route.js'
 
 const PORT = process.env.PORT || 4000;
 const URI = process.env.MongoDBURI;
@@ -18,6 +19,11 @@ mongoose.connect(URI).then(() => {
 }).catch((err) => {
   console.log(err)
 })
+
+
+// defining routes
+app.use("/book",bookRoute)
+
 
 app.post("/login",async(req,res)=>{
 const {email,password} = req.body
