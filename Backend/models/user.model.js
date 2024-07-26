@@ -1,17 +1,21 @@
 import mongoose from "mongoose";
 //schema
 const userSchema = mongoose.Schema({
-   userName: String,
+   fullname: {
+      String,
+      required :true},
    email: {
     type: String,
     required: true,
     unique : true
    },
-   password: String,
-   wishList: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Book'
-   }]
+   password: {type : String,
+      required : true},
+   
+   // wishList: [{
+   //  type: mongoose.Schema.Types.ObjectId,
+   //  ref: 'Book'
+   // }]
 
 
 
