@@ -2,16 +2,19 @@ import mongoose from "mongoose";
 //schema
 const userSchema = mongoose.Schema({
    fullname: {
-      String,
-      required :true},
-   email: {
-    type: String,
-    required: true,
-    unique : true
+     type: String,
+      required: true,
    },
-   password: {type : String,
-      required : true},
-   
+   email: {
+      type: String,
+      required: true,
+      unique: true,
+   },
+   password: {
+      type: String,
+      required: true,
+   }
+
    // wishList: [{
    //  type: mongoose.Schema.Types.ObjectId,
    //  ref: 'Book'
@@ -21,6 +24,6 @@ const userSchema = mongoose.Schema({
 
 })
 //model
-const User= mongoose.model("User",userSchema)
+const User = mongoose.model("User", userSchema)
 
 export default User;
